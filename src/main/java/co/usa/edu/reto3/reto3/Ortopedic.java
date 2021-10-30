@@ -40,14 +40,29 @@ import javax.persistence.Table;
  */
 public class Ortopedic implements Serializable{
     /**
-     * Atributos
+     * Id y generatevalue
      */
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+     /**
+     * Atributos
+     */
     private Integer id;
+     /**
+     * Atributos
+     */
     private String name;
+     /**
+     * Atributos
+     */
     private String brand;
+     /**
+     * Atributos
+     */
     private Integer year;
+     /**
+     * Atributos
+     */
     private String description;
     /**
      * Relaciones
@@ -56,11 +71,15 @@ public class Ortopedic implements Serializable{
     @JoinColumn(name = "categoryId")
     @JsonIgnoreProperties("ortopedics")
     private Categoria category;
-
+    /**
+     * Relaciones
+     */
     @OneToMany(cascade = {CascadeType.PERSIST},mappedBy = "ortopedic")
     @JsonIgnoreProperties({"ortopedic", "client"})
     private List<Mensaje> messages;
-
+    /**
+     * Relaciones
+     */
     @OneToMany(cascade = {CascadeType.PERSIST},mappedBy = "ortopedic")
     @JsonIgnoreProperties({"ortopedic", "client"})
     private List<Reservaciones> reservations;
